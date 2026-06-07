@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binance Fee App — 20% Discount</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@400;600;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #f0b90b;
+    --gold2: #c89a08;
+    --dark: #060c14;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .phone {
+    width: 390px;
+    height: 844px;
+    background: var(--dark);
+    border-radius: 44px;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+      0 0 0 2px #1a1a1a,
+      0 0 0 4px #0d0d0d,
+      0 40px 100px rgba(0,0,0,0.8),
+      0 0 80px rgba(240,185,11,0.12);
+  }
+
+  .screen {
+    height: 844px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    position: relative;
+  }
+
+  .screen::-webkit-scrollbar { display: none; }
+
+  .bg-grad {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 90% 50% at 50% 0%, rgba(240,185,11,0.15) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 40% at 90% 90%, rgba(240,185,11,0.08) 0%, transparent 60%),
+      linear-gradient(180deg, #060c14 0%, #020810 100%);
+    pointer-events: none;
+  }
+
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(240,185,11,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240,185,11,0.04) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: gridMove 7s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes gridMove {
+    from { background-position: 0 0; }
+    to { background-position: 30px 30px; }
+  }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    padding: 30px 20px 40px;
+  }
+
+  /* ---- TOP LOGO ---- */
+  .top-logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    animation: fadeDown 0.5s ease both;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-left {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .logo-box {
+    width: 40px; height: 40px;
+    background: var(--gold);
+    border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px; font-weight: 900; color: #000;
+    box-shadow: 0 0 20px rgba(240,185,11,0.55);
+  }
+
+  .logo-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--gold); letter-spacing: 2px;
+  }
+
+  .live-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(240,185,11,0.1);
+    border: 1px solid rgba(240,185,11,0.3);
+    color: var(--gold);
+    font-size: 10px; font-weight: 700;
+    padding: 5px 12px; border-radius: 20px;
+  }
+
+  .live-dot {
+    width: 7px; height: 7px;
+    background: #f0b90b;
+    border-radius: 50%;
+    animation: blink 1s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%,100% { opacity: 1; } 50% { opacity: 0.15; }
+  }
+
+  /* ---- HERO BANNER ---- */
+  .hero-banner {
+    background: linear-gradient(135deg, #0d1e2e, #091520);
+    border: 1px solid rgba(240,185,11,0.2);
+    border-radius: 20px;
+    padding: 26px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-banner::before {
+    content: '';
+    position: absolute;
+    top: -30px; left: 50%;
+    transform: translateX(-50%);
+    width: 220px; height: 110px;
+    background: radial-gradient(ellipse, rgba(240,185,11,0.18) 0%, transparent 70%);
+  }
+
+  .offer-tag {
+    display: inline-block;
+    background: rgba(240,185,11,0.12);
+    border: 1px solid rgba(240,185,11,0.25);
+    color: var(--gold);
+    font-size: 11px; font-weight: 700;
+    padding: 4px 12px; border-radius: 20px;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .hero-main .gold-text {
+    color: var(--gold);
+    font-size: 66px;
+    display: block;
+    animation: glowPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes glowPulse {
+    0%,100% { text-shadow: 0 0 30px rgba(240,185,11,0.5); }
+    50% { text-shadow: 0 0 70px rgba(240,185,11,1), 0 0 15px var(--gold); }
+  }
+
+  .hero-sub {
+    color: #6a8a9a;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+
+  .hero-sub strong { color: #b0c8d4; }
+
+  /* ---- MAIN CTA ---- */
+  .main-cta {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    border: none;
+    border-radius: 16px;
+    padding: 17px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 19px; font-weight: 900;
+    color: #000;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 10px 35px rgba(240,185,11,0.4);
+    margin-bottom: 22px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.6s 0.2s ease both;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .main-cta::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 2.5s ease-in-out infinite;
+  }
+
+  @keyframes shine {
+    0% { left: -100%; }
+    55%,100% { left: 150%; }
+  }
+
+  .main-cta:active { transform: scale(0.98); }
+
+  /* ---- FEATURES ---- */
+  .section-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #4a6070;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    animation: fadeUp 0.6s 0.25s ease both;
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .feat-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(240,185,11,0.1);
+    border-radius: 16px;
+    padding: 13px 15px;
+    transition: all 0.25s;
+  }
+
+  .feat-card:hover {
+    background: rgba(240,185,11,0.07);
+    border-color: rgba(240,185,11,0.3);
+    transform: translateX(5px);
+  }
+
+  .feat-icon {
+    font-size: 24px;
+    width: 40px; height: 40px;
+    background: rgba(240,185,11,0.08);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .feat-info strong {
+    display: block;
+    color: #ddeeff;
+    font-size: 13px; font-weight: 700;
+  }
+
+  .feat-info span {
+    color: #4a6070;
+    font-size: 11px;
+  }
+
+  .feat-check {
+    margin-left: auto;
+    width: 22px; height: 22px;
+    background: rgba(240,185,11,0.12);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ---- STATS ---- */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s 0.35s ease both;
+  }
+
+  .stat-card {
+    background: rgba(240,185,11,0.06);
+    border: 1px solid rgba(240,185,11,0.13);
+    border-radius: 14px;
+    padding: 14px 8px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px; font-weight: 900;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-lbl {
+    color: #3a5060;
+    font-size: 10px;
+    margin-top: 3px;
+  }
+
+  /* ---- LINK BOX ---- */
+  .link-box {
+    background: rgba(240,185,11,0.05);
+    border: 1px solid rgba(240,185,11,0.18);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .link-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #3a5060;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .link-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .link-text {
+    flex: 1;
+    font-size: 11px;
+    color: var(--gold);
+    word-break: break-all;
+    opacity: 0.8;
+  }
+
+  .copy-btn {
+    background: rgba(240,185,11,0.15);
+    border: 1px solid rgba(240,185,11,0.3);
+    color: var(--gold);
+    font-family: 'Cairo', sans-serif;
+    font-size: 11px; font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .copy-btn:hover { background: rgba(240,185,11,0.25); }
+
+  /* ---- DISCLAIMER ---- */
+  .disclaimer {
+    text-align: center;
+    color: #2a3f4f;
+    font-size: 10px;
+    line-height: 1.7;
+    animation: fadeUp 0.6s 0.45s ease both;
+  }
+
+  /* Particles */
+  .particle {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    animation: floatP var(--d) var(--delay) ease-in-out infinite;
+    left: var(--x); top: var(--y);
+  }
+
+  @keyframes floatP {
+    0% { opacity: 0; transform: translateY(0) scale(0); }
+    20% { opacity: 0.8; transform: translateY(-15px) scale(1); }
+    80% { opacity: 0.2; transform: translateY(-45px) scale(0.6); }
+    100% { opacity: 0; transform: translateY(-60px) scale(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="phone">
+  <div class="screen" id="screen">
+    <div class="bg-grad"></div>
+    <div class="bg-grid"></div>
+
+    <div class="content">
+
+      <!-- Logo Top -->
+      <div class="top-logo">
+        <div class="logo-left">
+          <div class="logo-box">BNB</div>
+          <div class="logo-name">BINANCE</div>
+        </div>
+        <div class="live-badge">
+          <div class="live-dot"></div>
+          LIVE
+        </div>
+      </div>
+
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div class="offer-tag">🔥 Special Offer — Sirf Aaj!</div>
+        <div class="hero-main">
+          TRADING
+          <span class="gold-text">20% OFF!</span>
+          FEES PAR
+        </div>
+        <div class="hero-sub">
+          Mere link se join karo aur<br>
+          <strong>Trading Fees par zabardast bachat pao!</strong><br>
+          Duniya ka #1 Crypto Exchange
+        </div>
+      </div>
+
+      <!-- Main CTA -->
+      <a class="main-cta" href="https://www.binance.com/register?ref=1119118410" target="_blank">
+        🚀 Abhi Join Karo — FREE!
+      </a>
+
+      <!-- Features -->
+      <div class="section-title">Kyun Join Karo?</div>
+      <div class="features">
+        <div class="feat-card">
+          <div class="feat-icon">💸</div>
+          <div class="feat-info">
+            <strong>20% Trading Fee Discount</strong>
+            <span>Har trade par paise bachao — guaranteed</span>
+          </div>
+          <div class="feat-check">✓</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🔐</div>
+          <div class="feat-info">
+            <strong>100% Safe & Secure</strong>
+            <span>World class security system</span>
+          </div>
+          <div class="feat-check">✓</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">⚡</div>
+          <div class="feat-info">
+            <strong>2 Min Mein Account Ready</strong>
+            <span>Asaan signup, koi fees nahi</span>
+          </div>
+          <div class="feat-check">✓</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📈</div>
+          <div class="feat-info">
+            <strong>350+ Coins Available</strong>
+            <span>Bitcoin, ETH, BNB aur bahut kuch</span>
+          </div>
+          <div class="feat-check">✓</div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-num">180+</span>
+          <div class="stat-lbl">Countries</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">150M+</span>
+          <div class="stat-lbl">Users</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">$76B</span>
+          <div class="stat-lbl">Daily Volume</div>
+        </div>
+      </div>
+
+      <!-- Link Box -->
+      <div class="link-box">
+        <div class="link-label">🔗 Mera Referral Link</div>
+        <div class="link-row">
+          <div class="link-text">binance.com/register?ref=1119118410</div>
+          <button class="copy-btn" onclick="copyLink()">Copy</button>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        ⚠️ Crypto mein investment risk hota hai.<br>
+        Soch samajh kar invest karo. Binance.com — Official Platform.
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const screen = document.getElementById('screen');
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.setProperty('--x', Math.random() * 100 + '%');
+    p.style.setProperty('--y', (10 + Math.random() * 80) + '%');
+    p.style.setProperty('--d', (3 + Math.random() * 5) + 's');
+    p.style.setProperty('--delay', (Math.random() * 7) + 's');
+    screen.appendChild(p);
+  }
+
+  function copyLink() {
+    navigator.clipboard.writeText('https://www.binance.com/register?ref=1119118410')
+      .then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = '✓ Copied!';
+        btn.style.background = 'rgba(240,185,11,0.3)';
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.style.background = '';
+        }, 2000);
+      });
+  }
+</script>
+
+</body>
+</html>
